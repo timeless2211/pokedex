@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-func (c *Client) GetLocation(locationName *string) (RespLocation, error) {
-	url := baseURL + "/location-area/" + *locationName
+func (c *Client) GetLocation(locationName string) (RespLocation, error) {
+	url := baseURL + "/location-area/" + locationName
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return RespLocation{}, err

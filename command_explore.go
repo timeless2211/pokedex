@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-func commandExplore(cfg *config) error {
-	fmt.Printf("Exploring %s...\n", *cfg.locationName)
-	locationName := cfg.locationName
-	if locationName == nil {
+func commandExplore(cfg *config, args ...string) error {
+	if len(args) == 0 {
 		return fmt.Errorf("no location name provided")
 	}
+	locationName := args[0]
+	fmt.Printf("Exploring %s...\n", locationName)
 	location, err := cfg.pokeapiClient.GetLocation(locationName)
 	if err != nil {
 		return err
